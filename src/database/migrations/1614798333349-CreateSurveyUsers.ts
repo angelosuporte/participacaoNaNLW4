@@ -1,4 +1,4 @@
-import {MigrationInterface, QueryRunner, Table, TreeRepositoryNotSupportedError} from "typeorm";
+import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
 export class CreateSurveyUsers1614798333349 implements MigrationInterface {
 
@@ -33,10 +33,10 @@ export class CreateSurveyUsers1614798333349 implements MigrationInterface {
                 ],
                 foreignKeys:[
                     {
-                        name: "FKUser",
-                        referencedTableName: "users",
+                        name: "FKSurvey",
+                        referencedTableName: "survey",
                         referencedColumnNames: ["id"],
-                        columnNames: ["user_id"],
+                        columnNames: ["survey_id"],
                         onDelete: "CASCADE",
                         onUpdate: "CASCADE"
                     },
