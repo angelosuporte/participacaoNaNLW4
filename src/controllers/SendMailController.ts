@@ -1,4 +1,4 @@
-import { request, Request, Response } from "express";
+import { Request, Response } from "express";
 import { getCustomRepository } from "typeorm";
 import { version } from "uuid";
 import { SurveysRepository } from "../repositories/SurveysRepository";
@@ -7,7 +7,7 @@ import { UsersRepository } from "../repositories/UsersRepository";
 
 class SendMailController {
 
-    async execute(resquest: Request, response: Response){
+    async execute(request: Request, response: Response){
         const { email, survey_id } = request.body;
 
         const usersRepository = getCustomRepository(UsersRepository);
@@ -35,7 +35,7 @@ class SendMailController {
 
         const surveyUser = surveyUsersRepository.create({
             user_id: userAlreadyExists.id,
-            survey_id
+            survey_id,
         });
         await surveyUsersRepository.save(surveyUser);
         //Send e-mail to user

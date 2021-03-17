@@ -10,7 +10,7 @@ class UserController{
 
         //SELECT * FROM USERS WHERE EMAIL = "EMAIL"
         const userAlreadyExists = await usersRepository.findOne({
-            email
+            email,
         });
 
         if(userAlreadyExists){
@@ -21,7 +21,7 @@ class UserController{
         }
 
         const user = usersRepository.create({
-            name, email
+            name, email,
         });
 
         await usersRepository.save(user);
